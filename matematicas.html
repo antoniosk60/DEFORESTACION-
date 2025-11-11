@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemáticas - Deforestación | Portal Educativo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #bcc4c9;
+            --bg-darker: #050505;
+            --primary: #10b981;
+            --accent: #f59e0b;
+            --text-light: #e9eef2;
+            --text-muted: #9aa0a6;
+            --border-color: rgba(255,255,255,0.1);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        /* Navbar mejorada */
+        .navbar {
+            background-color: var(--bg-darker) !important;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.5);
+            padding: 0.8rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.3rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent) !important;
+            background-color: rgba(245, 158, 11, 0.1);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(10,10,10,0.9) 0%, rgba(15,17,19,0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80') center/cover no-repeat;
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-muted);
+        }
+
+        /* Cards mejoradas */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            transition: all 0.3s;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-title {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            color: var(--text-muted);
+        }
+
+        /* Iconos y elementos visuales */
+        .resource-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .resource-badge {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0.2rem;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .resource-badge:hover {
+            background-color: rgba(16, 185, 129, 0.3);
+            transform: scale(1.05);
+        }
+
+        .resource-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        /* Secciones */
+        section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Listas mejoradas */
+        .resource-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-list li {
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .resource-list li:hover {
+            transform: translateX(5px);
+            background-color: rgba(245, 158, 11, 0.05);
+        }
+
+        /* Footer mejorado */
+        footer {
+            background-color: var(--bg-darker);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+
+        .social a {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .social a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Botones de recursos */
+        .btn-resource {
+            background-color: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .btn-resource:hover {
+            background-color: var(--accent);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Tablas */
+        .table-dark {
+            background-color: var(--bg-card);
+            color: var(--text-light);
+        }
+
+        .table-dark th {
+            border-color: var(--border-color);
+            color: var(--accent);
+        }
+
+        .table-dark td {
+            border-color: var(--border-color);
+        }
+
+        /* Alertas personalizadas */
+        .alert-success {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: var(--primary);
+        }
+
+        .alert-info {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+        }
+
+        /* Mejoras de accesibilidad */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Mejoras de contraste */
+        a:focus, button:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Responsive mejorado */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-hero p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 2rem 0;
+            }
+            
+            .navbar-nav {
+                text-align: center;
+            }
+            
+            .card {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-hero {
+                padding: 3rem 0;
+            }
+            
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+     <div id="site-header"></div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="efectos.html">Impacto Ambiental</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="causas.html">Causas de Deforestación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="prevencion.html">Cómo Ayudar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recursos.html">Recursos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="menuDesplegable" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            UAC´S
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menuDesplegable">
+                            <li><a class="dropdown-item" href="espanol.html">Español</a></li>
+                            <li><a class="dropdown-item" href="matematicas.html">Matemáticas</a></li>
+                            <li><a class="dropdown-item" href="ecosistemas.html">Ecosistemas</a></li>
+                            <li><a class="dropdown-item" href="programacion.html">Programación</a></li>
+                            <li><a class="dropdown-item" href="humanidades.html">Humanidades</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Contenido principal -->
+    <div class="container my-5">
+        <h1 class="section-title">Matemáticas - Análisis Cuantitativo de la Deforestación</h1>
+        
+        <!-- Introducción -->
+        <section class="mb-5">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Objetivos de Aprendizaje</h2>
+                    <ul class="topic-list">
+                        <li>Aplicar conceptos matemáticos al análisis de la deforestación</li>
+                        <li>Desarrollar habilidades de cálculo y medición de áreas forestales</li>
+                        <li>Interpretar datos estadísticos sobre pérdida de bosques</li>
+                        <li>Crear y analizar modelos matemáticos de impacto ambiental</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Herramientas de Cálculo -->
+        <section class="mb-5">
+            <h2 class="section-title">Herramientas de Cálculo</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h3 class="card-title h5">Calculadora de Área</h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="areaCalculator">
+                                <div class="mb-3">
+                                    <label for="length" class="form-label">Largo (metros)</label>
+                                    <input type="number" class="form-control" id="length" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="width" class="form-label">Ancho (metros)</label>
+                                    <input type="number" class="form-control" id="width" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Calcular</button>
+                            </form>
+                            <div id="areaResult" class="mt-3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h3 class="card-title h5">Conversión de Unidades</h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="unitConverter">
+                                <div class="mb-3">
+                                    <label for="value" class="form-label">Valor</label>
+                                    <input type="number" class="form-control" id="value" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="fromUnit" class="form-label">De</label>
+                                    <select class="form-select" id="fromUnit">
+                                        <option value="m2">Metros cuadrados (m²)</option>
+                                        <option value="ha">Hectáreas (ha)</option>
+                                        <option value="km2">Kilómetros cuadrados (km²)</option>
+                                        <option value="acre">Acres</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="toUnit" class="form-label">A</label>
+                                    <select class="form-select" id="toUnit">
+                                        <option value="m2">Metros cuadrados (m²)</option>
+                                        <option value="ha">Hectáreas (ha)</option>
+                                        <option value="km2">Kilómetros cuadrados (km²)</option>
+                                        <option value="acre">Acres</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Convertir</button>
+                            </form>
+                            <div id="conversionResult" class="mt-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estadísticas y Gráficos -->
+        <section class="mb-5">
+            <h2 class="section-title">Estadísticas y Gráficos</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="h5">Tasas de Deforestación</h3>
+                            <canvas id="deforestationChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="h5">Análisis de Datos</h3>
+                            <ul class="topic-list">
+                                <li>Cálculo de tasas de pérdida forestal</li>
+                                <li>Proyecciones de recuperación</li>
+                                <li>Estimaciones de impacto ambiental</li>
+                                <li>Modelos de crecimiento forestal</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ejercicios Prácticos -->
+        <section class="mb-5">
+            <h2 class="section-title">Ejercicios Prácticos</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5">Nivel Básico</h3>
+                            <ul class="topic-list">
+                                <li>Cálculo de áreas simples</li>
+                                <li>Conversiones básicas</li>
+                                <li>Porcentajes de pérdida</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary mt-3">Ver ejercicios</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5">Nivel Intermedio</h3>
+                            <ul class="topic-list">
+                                <li>Análisis de tasas</li>
+                                <li>Estadísticas descriptivas</li>
+                                <li>Gráficos comparativos</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary mt-3">Ver ejercicios</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="h5">Nivel Avanzado</h3>
+                            <ul class="topic-list">
+                                <li>Modelos predictivos</li>
+                                <li>Análisis multivariable</li>
+                                <li>Proyecciones complejas</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary mt-3">Ver ejercicios</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/include.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Calculadora de área
+        document.getElementById('areaCalculator').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const area = length * width;
+            document.getElementById('areaResult').innerHTML = `
+                <div class="alert alert-success">
+                    El área es: ${area} metros cuadrados (m²)
+                </div>
+            `;
+        });
+
+        // Conversión de unidades
+        document.getElementById('unitConverter').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const value = parseFloat(document.getElementById('value').value);
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+            
+            // Conversión a metros cuadrados primero
+            let inM2;
+            switch(fromUnit) {
+                case 'm2': inM2 = value; break;
+                case 'ha': inM2 = value * 10000; break;
+                case 'km2': inM2 = value * 1000000; break;
+                case 'acre': inM2 = value * 4046.86; break;
+            }
+
+            // Conversión a unidad destino
+            let result;
+            switch(toUnit) {
+                case 'm2': result = inM2; break;
+                case 'ha': result = inM2 / 10000; break;
+                case 'km2': result = inM2 / 1000000; break;
+                case 'acre': result = inM2 / 4046.86; break;
+            }
+
+            document.getElementById('conversionResult').innerHTML = `
+                <div class="alert alert-success">
+                    Resultado: ${result.toFixed(2)} ${toUnit}
+                </div>
+            `;
+        });
+
+        // Gráfico de deforestación
+        const ctx = document.getElementById('deforestationChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+                datasets: [{
+                    label: 'Hectáreas deforestadas (miles)',
+                    data: [120, 115, 118, 110, 105, 100],
+                    borderColor: '#2e7d32',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #bcc4c9;
+            --bg-darker: #050505;
+            --primary: #10b981;
+            --accent: #f59e0b;
+            --text-light: #e9eef2;
+            --text-muted: #9aa0a6;
+            --border-color: rgba(255,255,255,0.1);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        /* Navbar mejorada */
+        .navbar {
+            background-color: var(--bg-darker) !important;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.5);
+            padding: 0.8rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.3rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent) !important;
+            background-color: rgba(245, 158, 11, 0.1);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(10,10,10,0.9) 0%, rgba(15,17,19,0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80') center/cover no-repeat;
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-muted);
+        }
+
+        /* Cards mejoradas */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            transition: all 0.3s;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-title {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            color: var(--text-muted);
+        }
+
+        /* Iconos y elementos visuales */
+        .resource-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .resource-badge {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0.2rem;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .resource-badge:hover {
+            background-color: rgba(16, 185, 129, 0.3);
+            transform: scale(1.05);
+        }
+
+        .resource-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        /* Secciones */
+        section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Listas mejoradas */
+        .resource-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-list li {
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .resource-list li:hover {
+            transform: translateX(5px);
+            background-color: rgba(245, 158, 11, 0.05);
+        }
+
+        /* Footer mejorado */
+        footer {
+            background-color: var(--bg-darker);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+
+        .social a {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .social a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Botones de recursos */
+        .btn-resource {
+            background-color: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .btn-resource:hover {
+            background-color: var(--accent);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Tablas */
+        .table-dark {
+            background-color: var(--bg-card);
+            color: var(--text-light);
+        }
+
+        .table-dark th {
+            border-color: var(--border-color);
+            color: var(--accent);
+        }
+
+        .table-dark td {
+            border-color: var(--border-color);
+        }
+
+        /* Alertas personalizadas */
+        .alert-success {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: var(--primary);
+        }
+
+        .alert-info {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+        }
+
+        /* Mejoras de accesibilidad */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Mejoras de contraste */
+        a:focus, button:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Responsive mejorado */
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-hero p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 2rem 0;
+            }
+            
+            .navbar-nav {
+                text-align: center;
+            }
+            
+            .card {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-hero {
+                padding: 3rem 0;
+            }
+            
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Hero Section -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>¿Cómo Ayudar a Prevenir la Deforestación?</h1>
+                <p>Acciones concretas que puedes tomar para proteger nuestros bosques</p>
+            </div>
+        </section>
+
+        <!-- Contenido -->
+        <div class="container my-5">
+            <h2 class="section-title">Acciones para la Prevención</h2>
+
+            <!-- Introducción -->
+            <section class="mb-5">
+                <p class="lead">Cada persona tiene el poder de marcar la diferencia. Desde decisiones personales hasta acciones comunitarias, todos podemos contribuir a detener la deforestación.</p>
+            </section>
+
+            <!-- Acciones Personales -->
+            <section class="mb-5">
+                <h3 class="section-title">Acciones en tu Vida Diaria</h3>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-recycle me-2" style="color: var(--primary);"></i>
+                                    Reducir Consumo de Papel
+                                </h5>
+                                <p class="card-text">
+                                    Millones de árboles se talan para producir papel. Reduce su consumo y elige papel reciclado.
+                                </p>
+                                <ul class="resource-list small">
+                                    <li>Usa documentos digitales en lugar de impresos</li>
+                                    <li>Compra papel certificado FSC</li>
+                                    <li>Reutiliza hojas de papel</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-leaf me-2" style="color: var(--accent);"></i>
+                                    Consumo Sostenible
+                                </h5>
+                                <p class="card-text">
+                                    Muchos productos provienen de bosques deforestados. Elige alternativas ecológicas.
+                                </p>
+                                <ul class="resource-list small">
+                                    <li>Evita aceite de palma cuando sea posible</li>
+                                    <li>Elige maderas certificadas</li>
+                                    <li>Prefiere productos de comercio justo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-utensils me-2" style="color: var(--primary);"></i>
+                                    Cambios Alimenticios
+                                </h5>
+                                <p class="card-text">
+                                    La ganadería es una causa principal de deforestación. Reduce tu consumo de carne.
+                                </p>
+                                <ul class="resource-list small">
+                                    <li>Come menos carne roja</li>
+                                    <li>Prueba dietas vegetarianas/veganas</li>
+                                    <li>Elige carne de fuentes sostenibles</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-tree me-2" style="color: var(--accent);"></i>
+                                    Plantar Árboles
+                                </h5>
+                                <p class="card-text">
+                                    Participa en proyectos de reforestación en tu comunidad.
+                                </p>
+                                <ul class="resource-list small">
+                                    <li>Únete a grupos de reforestación locales</li>
+                                    <li>Planta árboles en tu jardín</li>
+                                    <li>Participa en limpiezas forestales</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-car me-2" style="color: var(--primary);"></i>
+                                    Reducir Emisiones
+                                </h5>
+                                <p class="card-text">
+                                    El cambio climático agrava la deforestación. Reduce tu huella de carbono.
+                                </p>
+                                <ul class="resource-list small">
+                                    <li>Usa transporte público o bicicleta</li>
+                                    <li>Reduce el consumo de energía</li>
+                                    <li>Compensa tu huella de carbono</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-graduation-cap me-2" style="color: var(--accent);"></i>
+                                    Educar a Otros
+                                </h5>
+                                <p class="card-text">
+                                    Comparte lo que aprendes sobre deforestación con amigos y familia.
+                                </p>
+                                <ul class="resource-list small">
+                                    <li>Habla sobre el problema</li>
+                                    <li>Comparte información en redes sociales</li>
+                                    <li>Organiza talleres educativos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Acciones Comunitarias -->
+            <section class="mb-5">
+                <h3 class="section-title">Acciones en tu Comunidad</h3>
+                <div class="resource-card">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Activismo Local</h5>
+                            <ul>
+                                <li>Únete a organizaciones ambientales</li>
+                                <li>Participa en manifestaciones por el clima</li>
+                                <li>Peticiones contra proyectos deforestadores</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Presión Política</h5>
+                            <ul>
+                                <li>Contacta a tus representantes</li>
+                                <li>Apoya políticas ambientales</li>
+                                <li>Vota por candidatos eco-conscientes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Apoyo a Organizaciones -->
+            <section class="mb-5">
+                <h3 class="section-title">Organizaciones que Trabajan por los Bosques</h3>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">WWF (Fondo Mundial para la Naturaleza)</h5>
+                                <p class="card-text">
+                                    Trabaja globalmente para proteger bosques y vida silvestre.
+                                </p>
+                                <a href="#" class="btn btn-resource btn-sm">Visitar Sitio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Greenpeace</h5>
+                                <p class="card-text">
+                                    Campañas internacionales contra la deforestación ilegal.
+                                </p>
+                                <a href="#" class="btn btn-resource btn-sm">Visitar Sitio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">The Nature Conservancy</h5>
+                                <p class="card-text">
+                                    Protege tierras y aguas mediante ciencia y conservación.
+                                </p>
+                                <a href="#" class="btn btn-resource btn-sm">Visitar Sitio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impacto Personal -->
+            <section class="mb-5">
+                <h3 class="section-title">Tu Impacto Cuenta</h3>
+                <div class="alert alert-success">
+                    <h5><i class="fas fa-check-circle me-2"></i>Cambio Individual = Cambio Global</h5>
+                    <p>Si una persona planta 10 árboles, 1000 personas plantarían 10,000 árboles. Imagina si millones actuamos juntos.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/include.js"></script>
+</body>
+</html>
