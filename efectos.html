@@ -60,13 +60,14 @@
             color: var(--accent) !important;
         }
 
-        /* Hero Section */
-        .page-hero {
-            background: linear-gradient(135deg, var(--bg-darker) 0%, rgba(16, 185, 129, 0.1) 100%);
-            padding: 3rem 0;
+         .page-hero {
+            background: linear-gradient(135deg, rgba(10,10,10,0.9) 0%, rgba(15,17,19,0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80') center/cover no-repeat;
+            padding: 5rem 0;
             text-align: center;
-            border-bottom: 2px solid var(--primary);
+            margin-bottom: 3rem;
         }
+
 
         .page-hero h1 {
             font-size: 2.5rem;
@@ -85,14 +86,14 @@
 
         /* Cards mejoradas */
         .card {
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: #363a3d;
             border: 1px solid var(--border-color);
             border-radius: 10px;
             transition: all 0.3s ease;
         }
 
         .card:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(32, 29, 29, 0.1);
             border-color: var(--primary);
         }
 
@@ -172,9 +173,37 @@
             color: var(--primary);
         }
 
-        /* Footer mejorado */
-        footer {
-            background-color: var(--bg-darker);
+        /* Map card responsive */
+        .map-card {
+            background-color: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            padding: 0.75rem;
+            border-radius: 8px;
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .map-card figcaption h3 { color: var(--text-light); }
+        .map-card figcaption p { color: var(--text-muted); }
+
+            /* Footer mejorado */
+            footer {
+                background-color: var(--bg-darker);
             padding: 2rem 0;
             border-top: 2px solid var(--primary);
             margin-top: 3rem;
@@ -197,9 +226,10 @@
     <!-- Contenido principal -->
     <main>
         <!-- Hero Section -->
+         
         <section class="page-hero">
             <div class="container">
-                <h1>Impacto Ambiental de la Deforestación</h1>
+                 <h1 class="fade-in">Impacto Ambiental de la Deforestación</h1>
                 <p>Entendiendo las consecuencias ecológicas globales</p>
             </div>
         </section>
@@ -374,7 +404,68 @@
             </section>
         </div>
     </main>
+<section class="container my-5">
+    <h2 class="section-title">Ubicaciones Importantes</h2>
 
+    <div class="row gy-4">
+        <div class="col-md-6">
+            <figure class="map-card" role="group" aria-labelledby="map-1-caption">
+                <div class="map-container" aria-hidden="false" role="region" aria-labelledby="map-1-caption">
+                    <iframe id="map-1" tabindex="0" title="Santuario Cerro Pelón - Reserva de la Biosfera Mariposa Monarca" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.90399819879!2d-100.28509112573946!3d19.327540645732096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842cc1c0b39f3ecd%3A0xbee6121fb26c7a1!2sSantuario%20Cerro%20Pel%C3%B3n%20-%20Mariposa%20Monarca!5e0!3m2!1ses!2smx!4v1732190000000!5m2!1ses!2smx"></iframe>
+                    <noscript><p class="small">Ver en <a href="https://www.google.com/maps/place/Santuario+Cerro+Pel%C3%B3n+-%20Mariposa+Monarca" target="_blank" rel="noopener noreferrer">Google Maps</a></p></noscript>
+                </div>
+                <figcaption id="map-1-caption" class="mt-2">
+                    <h3 class="h5 mb-1">Reserva de la Biosfera Mariposa Monarca</h3>
+                    <p class="small text-muted">Santuario Cerro Pelón, Estado de México — ejemplo de conservación de hábitats para las mariposas monarca.</p>
+                    <a class="small" href="https://www.google.com/maps/place/Santuario+Cerro+Pel%C3%B3n+-%20Mariposa+Monarca" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="col-md-6">
+            <figure class="map-card" role="group" aria-labelledby="map-2-caption">
+                <div class="map-container" aria-hidden="false" role="region" aria-labelledby="map-2-caption">
+                    <iframe id="map-2" tabindex="0" title="Bosque de Chapultepec" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.296645120003!2d-99.19782822573631!3d19.42044034494074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ffc181cfa97b%3A0x81aa06f81857232e!2sBosque%20de%20Chapultepec!5e0!3m2!1ses!2smx!4v1732190000001!5m2!1ses!2smx"></iframe>
+                    <noscript><p class="small">Ver en <a href="https://www.google.com/maps/place/Bosque+de+Chapultepec" target="_blank" rel="noopener noreferrer">Google Maps</a></p></noscript>
+                </div>
+                <figcaption id="map-2-caption" class="mt-2">
+                    <h3 class="h5 mb-1">Bosque de Chapultepec</h3>
+                    <p class="small text-muted">Uno de los pulmones verdes más importantes de la Ciudad de México, con valor histórico y recreativo.</p>
+                    <a class="small" href="https://www.google.com/maps/place/Bosque+de+Chapultepec" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="col-md-6">
+            <figure class="map-card" role="group" aria-labelledby="map-3-caption">
+                <div class="map-container" aria-hidden="false" role="region" aria-labelledby="map-3-caption">
+                    <iframe id="map-3" tabindex="0" title="Parque Nacional Nevado de Toluca" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.198804590972!2d-99.75723922574048!3d19.105743847189116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd88befd2fa763%3A0x6a8b2dbc5ca9f37e!2sNevado%20de%20Toluca!5e0!3m2!1ses!2smx!4v1732190000002!5m2!1ses!2smx"></iframe>
+                    <noscript><p class="small">Ver en <a href="https://www.google.com/maps/place/Nevado+de+Toluca" target="_blank" rel="noopener noreferrer">Google Maps</a></p></noscript>
+                </div>
+                <figcaption id="map-3-caption" class="mt-2">
+                    <h3 class="h5 mb-1">Parque Nacional Nevado de Toluca</h3>
+                    <p class="small text-muted">Área natural protegida con ecosistemas de montaña, bosques y alta biodiversidad.</p>
+                    <a class="small" href="https://www.google.com/maps/place/Nevado+de+Toluca" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="col-md-6">
+            <figure class="map-card" role="group" aria-labelledby="map-4-caption">
+                <div class="map-container" aria-hidden="false" role="region" aria-labelledby="map-4-caption">
+                    <iframe id="map-4" tabindex="0" title="Parque Nacional El Chico" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.7286849639383!2d-98.7310725257347!3d20.17037392046578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d174d08ea1e247%3A0x8c2067f4c868d913!2sParque%20Nacional%20El%20Chico!5e0!3m2!1ses!2smx!4v1732190000003!5m2!1ses!2smx"></iframe>
+                    <noscript><p class="small">Ver en <a href="https://www.google.com/maps/place/Parque+Nacional+El+Chico" target="_blank" rel="noopener noreferrer">Google Maps</a></p></noscript>
+                </div>
+                <figcaption id="map-4-caption" class="mt-2">
+                    <h3 class="h5 mb-1">Parque Nacional El Chico (Hidalgo)</h3>
+                    <p class="small text-muted">Parque nacional con bosques de pino-encino, ideal para senderismo y conservación.</p>
+                    <a class="small" href="https://www.google.com/maps/place/Parque+Nacional+El+Chico" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+ 
     <div id="site-footer"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
