@@ -1,0 +1,244 @@
+:root {
+    /* Variables originales del archivo global */
+    --primary-color: #2e7d32;
+    --secondary-color: #4caf50;
+    --accent-color: #8bc34a;
+    --dark-color: #1b5e20;
+    --light-color: #e8f5e9;
+
+    /* Variables añadidas desde matematicas.html (conservadas para compatibilidad)
+       Ahora centralizadas aquí para evitar duplicidad de estilos inline. */
+    --bg-dark: #0a0a0a;
+    --bg-card: #bcc4c9;
+    --bg-darker: #050505;
+    --primary: #10b981;
+    --accent: #f59e0b;
+    --text-light: #e9eef2;
+    --text-muted: #9aa0a6;
+    --border-color: rgba(255,255,255,0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.navbar {
+    background-color: var(--dark-color) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: rgb(255, 255, 255) !important;
+}
+
+.nav-link, .dropdown-item {
+    color:  rgba(0, 0, 0, 0.9) !important;
+    font-weight: 500;
+}
+
+.nav-link:hover, .dropdown-item:hover {
+    color: var(--accent-color) !important;
+}
+
+.section-title {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background-color: var(--primary-color);
+    color: rgb(255, 0, 0);
+    border-radius: 10px 10px 0 0 !important;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-color);
+    border-color: var(--dark-color);
+}
+
+.btn-success {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.topic-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.topic-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.topic-list li:before {
+    content: "•";
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+/* Timeline styles */
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-item {
+    padding: 20px;
+    border-left: 2px solid var(--primary-color);
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.timeline-item:before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    left: -7px;
+    top: 24px;
+}
+
+/* Mejoras para dispositivos móviles */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .navbar-collapse {
+        background-color: var(--dark-color);
+        padding: 10px;
+        border-radius: 0 0 5px 5px;
+    }
+    
+    .dropdown-menu {
+        background-color: var(--dark-color);
+        border: none;
+    }
+}
+
+/* Mejoras de accesibilidad */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(46, 125, 50, 0.25);
+    border-color: var(--primary-color);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+}
+
+/* Mejoras de rendimiento visual */
+.card {
+    will-change: transform;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ------------------------- */
+/* Footer styles (moved from partials/footer.html) */
+/* These rules enhance the footer visual while reusing CSS variables already declared above */
+footer {
+    background-color: ('#e74c3c','#f59e0b','#3498db','#2ecc71');
+    border-top: 2px solid var(--accent);
+    position: relative;
+    color: var(--text-light);
+}
+
+.footer-overlay {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(circle at top center, rgba(245, 158, 11, 0.1), transparent 60%);
+    animation: aurora 8s ease-in-out infinite alternate;
+    pointer-events: none; /* no interfiere con clicks */
+    z-index: 0;
+}
+
+@keyframes aurora {
+    0% { transform: translateX(-10%) rotate(2deg); }
+    100% { transform: translateX(10%) rotate(-2deg); }
+}
+
+footer h5 {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+}
+
+footer .social a {
+    color: var(--text-light);
+    font-size: 1.3rem;
+    margin: 0 0.4rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+footer .social a:hover {
+    color: var(--accent);
+    transform: translateY(-3px) scale(1.2);
+}
+
+.footer-bottom {
+    font-size: 0.85rem;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    footer h5 { font-size: 1.1rem; }
+}
+
+/* Utility to ensure footer content sits above the overlay */
+footer .container, footer .footer-bottom { position: relative; z-index: 1; }
+
+/* End footer styles */

@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora de Áreas</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; text-align: center; padding: 20px; }
+    .contenedor { background: white; padding: 20px; border-radius: 8px; max-width: 400px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    select, input, button { margin: 10px 0; padding: 8px; width: 90%; }
+    .resultado { font-weight: bold; margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>Calculadora de Áreas</h2>
+    <label for="figura">Selecciona la figura:</label>
+    <select id="figura" onchange="mostrarCampos()">
+        <option value="">-- Elige una opción --</option>
+        <option value="circulo">Círculo</option>
+        <option value="rectangulo">Rectángulo</option>
+        <option value="triangulo">Triángulo</option>
+    </select>
+
+    <div id="campos"></div>
+
+    <button onclick="calcularArea()">Calcular Área</button>
+    <div class="resultado" id="resultado"></div>
+</div>
+
+<script>
+function mostrarCampos() {
+    const figura = document.getElementById("figura").value;
+    const campos = document.getElementById("campos");
+    campos.innerHTML = "";
+
+    if (figura === "circulo") {
+        campos.innerHTML = '<input type="number" id="radio" placeholder="Radio">';
+    } else if (figura === "rectangulo") {
+        campos.innerHTML = '<input type="number" id="base" placeholder="Base">' +
+                           '<input type="number" id="altura" placeholder="Altura">';
+    } else if (figura === "triangulo") {
+        campos.innerHTML = '<input type="number" id="base" placeholder="Base">' +
+                           '<input type="number" id="altura" placeholder="Altura">';
+    }
+}
+
+function calcularArea() {
+    const figura = document.getElementById("figura").value;
+    let area = 0;
+
+    if (figura === "circulo") {
+        const r = parseFloat(document.getElementById("radio").value);
+        area = Math.PI * Math.pow(r, 2);
+    } else if (figura === "rectangulo") {
+        const b = parseFloat(document.getElementById("base").value);
+        const h = parseFloat(document.getElementById("altura").value);
+        area = b * h;
+    } else if (figura === "triangulo") {
+        const b = parseFloat(document.getElementById("base").value);
+        const h = parseFloat(document.getElementById("altura").value);
+        area = (b * h) / 2;
+    }
+
+    document.getElementById("resultado").innerText = 
+        figura ? `El área es: ${area.toFixed(2)}` : "Selecciona una figura.";
+}
+</script>
+
+</body>
+</html>
+
