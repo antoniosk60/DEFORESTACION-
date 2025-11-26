@@ -1,66 +1,80 @@
 <!-- Header compartido: barra de navegación -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" role="navigation" aria-label="Navegación principal">
-    <div class="container">
-        <a class="navbar-brand" href="index.html" aria-label="Ir a inicio">
-            <i class="fas fa-tree me-2" aria-hidden="true"></i>Proyecto REFO
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="definicion.html">Qué es la Reforestación</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="efectos.html">Impacto Ambiental</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="causas.html">Causas de Deforestación</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="prevencion.html">Cómo Ayudar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="recursos.html">Recursos</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="menuDesplegable" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-                        UAC'S
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menuDesplegable">
-                        <li><a class="dropdown-item" href="espanol.html">Español</a></li>
-                        <li><a class="dropdown-item" href="ingles.html">Inglés</a></li>
-                        <li><a class="dropdown-item" href="matematicas.html">Matemáticas</a></li>
-                        <li><a class="dropdown-item" href="ecosistemas.html">Ecosistemas</a></li>
-                        <li><a class="dropdown-item" href="programacion.html">Programación</a></li>
-                        <li><a class="dropdown-item" href="humanidades.html">Humanidades</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+  <div class="container">
+    <a class="navbar-brand" href="index.html" aria-label="Ir a inicio">
+      <i class="fas fa-tree me-2" aria-hidden="true"></i>Proyecto REFO
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="definicion.html">Qué es la Reforestación</a></li>
+        <li class="nav-item"><a class="nav-link" href="efectos.html">Impacto Ambiental</a></li>
+        <li class="nav-item"><a class="nav-link" href="causas.html">Causas de Deforestación</a></li>
+        <li class="nav-item"><a class="nav-link" href="prevencion.html">Cómo Ayudar</a></li>
+        <li class="nav-item"><a class="nav-link" href="recursos.html">Recursos</a></li>
+
+        <!-- Dropdown UAC'S -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="menuDesplegable" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            UAC'S
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menuDesplegable">
+            <li><a class="dropdown-item" href="espanol.html">Español</a></li>
+            <li><a class="dropdown-item" href="ingles.html">Inglés</a></li>
+            <li><a class="dropdown-item" href="matematicas.html">Matemáticas</a></li>
+            <li><a class="dropdown-item" href="ecosistemas.html">Ecosistemas</a></li>
+            <li><a class="dropdown-item" href="programacion.html">Programación</a></li>
+            <li><a class="dropdown-item" href="humanidades.html">Humanidades</a></li>
+          </ul>
+        </li>
+
+        <!-- Dropdown Usuario -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle waves-effect waves-light" 
+             id="navbarDropdownMenuLink-333" 
+             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+            <!-- Login de Alumnos -->
+            <a class="dropdown-item waves-effect waves-light" href="log.html">Alumnos</a>
+            <!-- Login de Docentes -->
+            <a class="dropdown-item waves-effect waves-light" href="log.html">Docentes</a>
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>
 
 <!-- Script helper: añade clase "active" al enlace correspondiente según la URL -->
 <script>
-    (function(){
-        try{
-            const current = location.pathname.split('/').pop() || 'index.html';
-            const links = document.querySelectorAll('.navbar .nav-link');
-            links.forEach(a => {
-                const href = a.getAttribute('href');
-                if(!href) return;
-                if(href === current || (href === 'index.html' && current === '')) {
-                    a.classList.add('active');
-                }
-            });
-        }catch(e){
-            console.warn('header script:', e);
+  (function(){
+    try{
+      const current = location.pathname.split('/').pop() || 'index.html';
+      const links = document.querySelectorAll('.navbar .nav-link');
+      links.forEach(a => {
+        const href = a.getAttribute('href');
+        if(!href) return;
+        if(href === current || (href === 'index.html' && current === '')) {
+          a.classList.add('active');
         }
-    })();
+      });
+      // Marca el ícono de usuario activo si estás en log.html o loginprof.html
+      const userLinks = document.querySelectorAll('.dropdown-menu a');
+      userLinks.forEach(a => {
+        const href = a.getAttribute('href');
+        if(href === current) {
+          document.getElementById('navbarDropdownMenuLink-333').classList.add('active');
+        }
+      });
+    }catch(e){
+      console.warn('header script:', e);
+    }
+  })();
 </script>
